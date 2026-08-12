@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #14181d;
+  color: #edeff2;
+  cursor: none;
+}
+
+img, svg, video {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media (max-width: 768px), (hover: none) {
+  body {
+    cursor: auto;
+  }
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #14181d;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a4653;
+  border-radius: 6px;
+}
+
+/* Glazing-bar motif: a thin cross-hatch divider echoing window mullions */
+.glazing-divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3a4653 15%, #3a4653 85%, transparent);
+}
+.glazing-divider::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  width: 1px;
+  height: 17px;
+  background: #3a4653;
+}
+
+/* Prismatic edge-light on glass panels — a thin refracted highlight on one edge */
+.glass-panel {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(127, 168, 201, 0.5),
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(185, 139, 78, 0.4)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #d4ab74, #7fa8c9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
